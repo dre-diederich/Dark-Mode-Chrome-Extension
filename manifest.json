@@ -10,6 +10,7 @@
         "48": "icons/icons48.png",
         "128": "icons/icons128.png"
       },
+      "default_popup": "popup.html",
       "default_title": "Toggle Dark Mode"
     },
     "background": {
