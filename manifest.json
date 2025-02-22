@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Best Dark Mode Extension",
+    "version": "1.0",
+    "description": "Add dark mode to any website.",
+    "permissions": ["activeTab", "storage"],
+    "action": {
+      "default_icon": {
+        "16": "icons/icons16.png",
+        "48": "icons/icons48.png",
+        "128": "icons/icons128.png"
+      },
+      "default_title": "Toggle Dark Mode"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["darkmode.css"]
+    }]
+  }

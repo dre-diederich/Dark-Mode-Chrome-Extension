@@ -1,0 +1,13 @@
+.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+  }
+  
+  .dark-mode a {
+    color: #6ea8fe !important;
+  }
+  
+  .dark-mode img {
+    filter: brightness(.8) contrast(1.2) !important;
+  }
+  
