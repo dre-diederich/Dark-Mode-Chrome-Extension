@@ -1,12 +1,16 @@
+
 let darkMode = false;
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === "toggle") {
-      darkMode = !darkMode;
-      if (darkMode) {
-        document.body.classList.add('dark-mode');
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action === 'toggleDark') {
+    darkMode = !darkMode;
+    console.log("Dark Mode Toggled: " + darkMode)
+      if (request.darkMode) {
+          document.body.style.backgroundColor = '#1a1a1a';
+          document.body.style.color = '#ffffff';
       } else {
-        document.body.classList.remove('dark-mode');
+          document.body.style.backgroundColor = '';
+          document.body.style.color = '';
       }
-    }
-  });
+  }
+});

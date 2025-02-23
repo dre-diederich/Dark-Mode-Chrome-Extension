@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "Best Dark Mode Extension",
-    "version": "1.0",
+    "name": "Beautiful Dark Mode",
+    "version": "1.02",
     "description": "Add dark mode to any website.",
     "permissions": ["activeTab", "storage"],
     "action": {
@@ -11,7 +11,7 @@
         "128": "icons/icons128.png"
       },
       "default_popup": "popup.html",
-      "default_title": "Toggle Dark Mode"
+      "default_title": "Dark Mode"
     },
     "background": {
       "service_worker": "background.js"
