@@ -76,10 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle dark mode
     document.getElementById('toggleDark').addEventListener('click', () => {
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        console.log('Sending toggle dark-mode message')
         chrome.tabs.sendMessage(tabs[0].id, { action: "toggle" });
       });
     });
   });
-  
-  
