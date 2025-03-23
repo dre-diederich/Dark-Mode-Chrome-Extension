@@ -1,24 +1,25 @@
 {
     "manifest_version": 3,
-    "name": "Beautiful Dark Mode",
-    "version": "1.02",
-    "description": "Add dark mode to any website.",
-    "permissions": ["activeTab", "storage"],
+    "name": "Eclipse Dark Mode",
+    "version": "1.0",
+    "description": "A Chrome extension for dark mode with custimiable controls and presets.",
+    "permissions": ["storage", "scripting", "tabs", "activeTab"],
+    "host_permissions": ["<all_urls>"],
     "action": {
+      "default_popup": "popup.html",
       "default_icon": {
         "16": "icons/icons16.png",
         "48": "icons/icons48.png",
         "128": "icons/icons128.png"
-      },
-      "default_popup": "popup.html",
-      "default_title": "Dark Mode"
+      }
     },
     "background": {
       "service_worker": "background.js"
     },
-    "content_scripts": [{
+    "content_scripts": [
+      {
       "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "css": ["darkmode.css"]
-    }]
+      "js": ["content.js"]
+    }
+  ]
   }

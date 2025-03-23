@@ -1,168 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      width: 320px;
-      height: 480px;
-      overflow: hidden;
-    }
-
-    body {
-      background-image: url('images/darkmoon.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-
-    .container {
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 15px;
-    }
-
-    .tabs {
-      display: flex;
-      margin-bottom: 15px;
-    }
-
-    .tab {
-      padding: 8px 15px;
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: white;
-      cursor: pointer;
-      flex: 1;
-    }
-
-    .tab.active {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .tab-content {
-      display: none;
-      height: calc(100% - 80px);
-      overflow-y: auto;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .slider-container {
-      margin: 15px 0;
-    }
-
-    .slider-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 5px;
-    }
-
-    input[type="range"] {
-      width: 100%;
-      margin: 8px 0;
-    }
-
-    .preset-button {
-      width: 100%;
-      padding: 10px;
-      margin: 5px 0;
-      border: none;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .preset-button:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    #toggleDark {
-      width: 100%;
-      padding: 10px;
-      background-color: blue;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      margin: 10px 0;
-    }
-
-    #toggleDark:active {
-        background-color: darkblue;
-    }
-    /* Custom scrollbar for the tab content */
-    .tab-content::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .tab-content::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .tab-content::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 4px;
-    }
-
-    .tab-content::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-  </style>
+  <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="tabs">
-      <button class="tab active" data-tab="controls">Controls</button>
-      <button class="tab" data-tab="presets">Presets</button>
-    </div>
-
-    <div id="controls" class="tab-content active">
-      <button id="toggleDark">Toggle Dark Mode</button>
-      
-      <div class="slider-container">
-        <div class="slider-label">
-          <span>Brightness</span>
-          <span id="brightnessValue">100%</span>
+  <!-- Theme Switch as Header -->
+  <header>
+    <h1 class="app-title"><img src="/icons/icons48.png" alt="moon icon"></h1>
+    <label class="theme-switch">
+      <input type="checkbox" class="theme-switch__checkbox" id="toggleButton">
+      <div class="theme-switch__container">
+        <div class="theme-switch__clouds"></div>
+        <div class="theme-switch__stars-container">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688Z" fill="currentColor"></path>
+          </svg>
         </div>
-        <input type="range" id="brightness" min="50" max="150" value="100">
-      </div>
-
-      <div class="slider-container">
-        <div class="slider-label">
-          <span>Contrast</span>
-          <span id="contrastValue">100%</span>
+        <div class="theme-switch__circle-container">
+          <div class="theme-switch__sun-moon-container">
+            <div class="theme-switch__moon">
+              <div class="theme-switch__spot"></div>
+              <div class="theme-switch__spot"></div>
+              <div class="theme-switch__spot"></div>
+            </div>
+          </div>
         </div>
-        <input type="range" id="contrast" min="50" max="150" value="100">
       </div>
+    </label>
+  </header>
 
-      <div class="slider-container">
-        <div class="slider-label">
-          <span>Warmth</span>
-          <span id="warmthValue">100%</span>
-        </div>
-        <input type="range" id="warmth" min="0" max="100" value="50">
-      </div>
-    </div>
-
-    <div id="presets" class="tab-content">
-      <button class="preset-button" data-preset="moonlight">&#127769 Moonlight</button>
-      <button class="preset-button" data-preset="sepia">&#128220 Sepia</button>
-      <button class="preset-button" data-preset="midnight">&#127756 Midnight Blue</button>
-      <button class="preset-button" data-preset="forest">&#127794 Forest</button>
-    </div>
+  <!-- Tabs for Controls and Presets -->
+  <div class="tabs">
+    <button class="tab" id="controlsTab">Controls</button>
+    <button class="tab" id="presetsTab">Presets</button>
   </div>
+
+  <div id="controls" class="tab-content">
+    <label>
+      Brightness: <span id="brightnessValue">100%</span>
+      <input type="range" id="brightness" min="50" max="150" value="100" />
+    </label>
+    <label>
+      Contrast: <span id="contrastValue">100%</span>
+      <input type="range" id="contrast" min="50" max="150" value="100" />
+    </label>
+    <label>
+      Warmth: <span id="warmthValue">50%</span>
+      <input type="range" id="warmth" min="0" max="100" value="50" />
+    </label>
+  </div>
+
+  <div id="presets" class="tab-content" style="display:none;">
+    <button id="preset1">Cool Dark</button>
+    <button id="preset2">Warm Dark</button>
+    <button id="preset3">Balanced Dark</button>
+  </div>
+
   <script src="popup.js"></script>
 </body>
 </html>
